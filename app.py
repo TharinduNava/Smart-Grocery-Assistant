@@ -368,25 +368,54 @@ with tab1:
 with tab2:
     st.subheader("🏠 Pantry Inventory")
     if st.session_state.pantry:
-        pantry_df = pd.DataFrame(st.session_state.pantry)
-        display_df = pantry_df.copy()
-        display_df['buy_date'] = display_df['buy_date'].dt.strftime('%Y-%m-%d')
-        display_df['expiry_date'] = display_df['expiry_date'].dt.strftime(
-            '%Y-%m-%d')
+        # Create a Grid Layout for the Table
+        h1, h2, h3, h4, h5 = st.columns([2, 1.5, 1.5, 1.5, 0.5])
+        h1.markdown("**Item**")
+        h2.markdown("**Buy Date**")
+        h3.markdown("**Expiry Date**")
+        h4.markdown("**Status**")
+        h5.markdown("**Action**")
+        st.divider()
 
-        def highlight_status(val):
-            color = 'green'
-            if val == 'Expired':
-                color = 'red'
-            elif val == 'Critical':
-                color = 'orange'
-            elif val == 'Expiring Soon':
-                color = 'yellow'
-            return f'color: {color}; font-weight: bold'
-        st.dataframe(display_df.style.map(highlight_status,
-                     subset=['status']), use_container_width=True)
+        index_to_remove = None
+        # Loop through pantry items to create rows
+        for i, entry in enumerate(st.session_state.pantry):
+            c1, c2, c3, c4, c5 = st.columns([2, 1.5, 1.5, 1.5, 0.5])
+
+            # Format dates nicely
+            buy_str = entry['buy_date'].strftime('%Y-%m-%d')
+            exp_str = entry['expiry_date'].strftime('%Y-%m-%d')
+
+            # Status Coloring
+            status = entry['status']
+            color = "green"
+            if status == "Expired":
+                color = "red"
+            elif status == "Critical":
+                color = "orange"
+            elif status == "Expiring Soon":
+                color = "orange"
+
+            # Render Row
+            c1.write(entry['item'])
+            c2.write(buy_str)
+            c3.write(exp_str)
+            c4.markdown(f":{color}[{status}]")
+
+            # DELETE BUTTON LOGIC
+            if c5.button("🗑️", key=f"delete_pantry_{i}"):
+                index_to_remove = i
+
+        # Handle Deletion
+        if index_to_remove is not None:
+            removed_item = st.session_state.pantry.pop(index_to_remove)
+            DataManager.save_history(st.session_state.pantry)
+            st.warning(
+                f"Removed {removed_item['item']} from pantry and database.")
+            st.rerun()
+
     else:
-        st.write("Pantry is empty.")
+        st.info("Pantry is empty.")
 
 # === TAB 3: ANALYTICS (SIMPLIFIED) ===
 with tab3:
