@@ -1,0 +1,32 @@
+[
+    {
+        "item": "Red Raw Rice (Kekulu)",
+        "buy_date": "2025-11-23",
+        "expiry_date": "2026-05-22",
+        "status": "Good"
+    },
+    {
+        "item": "Happy Cow Cheese",
+        "buy_date": "2025-11-23",
+        "expiry_date": "2026-02-21",
+        "status": "Good"
+    },
+    {
+        "item": "White Raw Rice (Samba)",
+        "buy_date": "2025-11-23",
+        "expiry_date": "2026-05-22",
+        "status": "Good"
+    },
+    {
+        "item": "Kurakkan Bread",
+        "buy_date": "2025-11-23",
+        "expiry_date": "2025-11-27",
+        "status": "Expiring Soon"
+    },
+    {
+        "item": "Cassava Chips",
+        "buy_date": "2025-11-23",
+        "expiry_date": "2026-01-22",
+        "status": "Good"
+    }
+]
