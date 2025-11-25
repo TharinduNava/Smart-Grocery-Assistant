@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import json
 import re
+import time  # <--- IMPORT TIME MODULE HERE
 from datetime import datetime, timedelta
 import google.generativeai as genai
 
@@ -397,7 +398,9 @@ def open_add_product_modal():
 
                         DataManager.save_catalog(PRODUCT_CATALOG)
                         st.success(f"Added {new_name} successfully!")
-                        st.rerun()
+                        # ADDED: Wait for 1.5s so user sees the message before rerun
+                        time.sleep(1.5)
+                        # st.rerun()
 
     # ==========================
     # MODE 2: EDIT EXISTING PRODUCT
@@ -461,7 +464,9 @@ def open_add_product_modal():
                     DataManager.save_catalog(PRODUCT_CATALOG)
                     st.success(
                         f"✅ Updated '{selected_item_name}' successfully!")
-                    st.rerun()
+                    # ADDED: Wait for 1.5s so user sees the message before rerun
+                    time.sleep(1.5)
+                    # st.rerun()
 
 
 @st.dialog("✨ Smart Grocery AI", width="medium")
