@@ -1,32 +1,62 @@
 [
     {
-        "item": "Red Raw Rice (Kekulu)",
-        "buy_date": "2025-11-23",
-        "expiry_date": "2026-05-22",
-        "status": "Good"
-    },
-    {
-        "item": "Happy Cow Cheese",
-        "buy_date": "2025-11-23",
-        "expiry_date": "2026-02-21",
-        "status": "Good"
-    },
-    {
         "item": "White Raw Rice (Samba)",
         "buy_date": "2025-11-23",
-        "expiry_date": "2026-05-22",
+        "expiry_date": "2026-06-05",
         "status": "Good"
     },
     {
-        "item": "Kurakkan Bread",
+        "item": "Red Dhal (Parippu)",
         "buy_date": "2025-11-23",
-        "expiry_date": "2025-11-27",
-        "status": "Expiring Soon"
+        "expiry_date": "2026-06-05",
+        "status": "Good"
     },
     {
-        "item": "Cassava Chips",
+        "item": "Roasted Chickpeas",
         "buy_date": "2025-11-23",
-        "expiry_date": "2026-01-22",
+        "expiry_date": "2026-03-07",
+        "status": "Good"
+    },
+    {
+        "item": "King Coconut (Thambili)",
+        "buy_date": "2025-11-23",
+        "expiry_date": "2025-12-10",
+        "status": "Good"
+    },
+    {
+        "item": "Gotukola Bundle",
+        "buy_date": "2025-11-23",
+        "expiry_date": "2025-12-10",
+        "status": "Good"
+    },
+    {
+        "item": "Banana (Ambul)",
+        "buy_date": "2025-11-23",
+        "expiry_date": "2025-12-12",
+        "status": "Good"
+    },
+    {
+        "item": "Instant Noodles (Chicken)",
+        "buy_date": "2025-11-23",
+        "expiry_date": "2026-06-05",
+        "status": "Good"
+    },
+    {
+        "item": "Roast Paan",
+        "buy_date": "2025-11-23",
+        "expiry_date": "2025-11-25",
+        "status": "Expired"
+    },
+    {
+        "item": "Fish Bun (Maalu Paan)",
+        "buy_date": "2025-11-23",
+        "expiry_date": "2025-11-25",
+        "status": "Expired"
+    },
+    {
+        "item": "Chicken Burger",
+        "buy_date": "2025-11-26",
+        "expiry_date": "2025-11-29",
         "status": "Good"
     }
 ]
