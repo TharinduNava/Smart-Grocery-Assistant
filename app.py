@@ -4,6 +4,7 @@ import json
 import re
 from datetime import datetime, timedelta
 import google.generativeai as genai
+import os
 
 # ==========================================
 # 🔑 CONFIGURATION
@@ -885,4 +886,5 @@ with tab4:
                 st.info(alert)
         else:
             st.success("No restock predictions needed yet. ✅")
+
 
