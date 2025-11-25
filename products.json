@@ -4,49 +4,57 @@
             "price": 220,
             "days_to_expire": 180,
             "healthy": false,
-            "alt": "Red Raw Rice (Kekulu)"
+            "alt": "Red Raw Rice (Kekulu)",
+            "category": "Rice & Grains"
         },
         "Red Raw Rice (Kekulu)": {
             "price": 190,
             "days_to_expire": 180,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Rice & Grains"
         },
         "Keeri Samba": {
             "price": 260,
             "days_to_expire": 180,
             "healthy": false,
-            "alt": "Red Basmati Rice"
+            "alt": "Red Basmati Rice",
+            "category": "Rice & Grains"
         },
         "Red Basmati Rice": {
             "price": 450,
             "days_to_expire": 365,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Rice & Grains"
         },
         "Instant Noodles (Chicken)": {
             "price": 160,
             "days_to_expire": 180,
             "healthy": false,
-            "alt": "Red Rice Noodles"
+            "alt": "Red Rice Noodles",
+            "category": "Rice & Grains"
         },
         "Red Rice Noodles": {
             "price": 350,
             "days_to_expire": 180,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Rice & Grains"
         },
         "Kurakkan Flour": {
             "price": 400,
             "days_to_expire": 90,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Rice & Grains"
         },
         "Wheat Flour": {
             "price": 210,
             "days_to_expire": 90,
             "healthy": false,
-            "alt": "Kurakkan Flour"
+            "alt": "Kurakkan Flour",
+            "category": "Rice & Grains"
         }
     },
     "Pantry Staples": {
@@ -54,61 +62,71 @@
             "price": 320,
             "days_to_expire": 180,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Pantry Staples"
         },
         "Coconut Milk Powder": {
             "price": 850,
             "days_to_expire": 365,
             "healthy": false,
-            "alt": "Fresh Coconut"
+            "alt": "Fresh Coconut",
+            "category": "Pantry Staples"
         },
         "Fresh Coconut": {
             "price": 120,
             "days_to_expire": 14,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Pantry Staples"
         },
         "Canned Mackerel (Salmon)": {
             "price": 650,
             "days_to_expire": 700,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Pantry Staples"
         },
         "Soya Meat (Chicken Flavor)": {
             "price": 110,
             "days_to_expire": 365,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Pantry Staples"
         },
         "Maldive Fish (Umbalakada)": {
             "price": 1500,
             "days_to_expire": 180,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Pantry Staples"
         },
         "Chili Powder": {
             "price": 400,
             "days_to_expire": 365,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Pantry Staples"
         },
         "Roasted Curry Powder": {
             "price": 450,
             "days_to_expire": 365,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Pantry Staples"
         },
         "Sugar (White)": {
             "price": 280,
             "days_to_expire": 365,
             "healthy": false,
-            "alt": "Kithul Jaggery"
+            "alt": "Kithul Jaggery",
+            "category": "Pantry Staples"
         },
         "Kithul Jaggery": {
             "price": 600,
             "days_to_expire": 180,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Pantry Staples"
         }
     },
     "Bakery & Snacks": {
@@ -116,73 +134,113 @@
             "price": 100,
             "days_to_expire": 2,
             "healthy": false,
-            "alt": "Kurakkan Bread"
+            "alt": "Kurakkan Bread",
+            "category": "Bakery & Snacks"
         },
         "Kurakkan Bread": {
             "price": 180,
             "days_to_expire": 4,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Bakery & Snacks"
         },
         "Fish Bun (Maalu Paan)": {
             "price": 120,
             "days_to_expire": 2,
             "healthy": false,
-            "alt": "Vegetable Roti"
+            "alt": "Vegetable Roti",
+            "category": "Bakery & Snacks"
         },
         "Vegetable Roti": {
             "price": 80,
             "days_to_expire": 1,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Bakery & Snacks"
         },
         "Kimbula Banis": {
             "price": 90,
             "days_to_expire": 3,
             "healthy": false,
-            "alt": "Sesame Ball (Thala Guli)"
+            "alt": "Sesame Ball (Thala Guli)",
+            "category": "Bakery & Snacks"
         },
         "Lemon Puff Biscuits": {
             "price": 250,
             "days_to_expire": 180,
             "healthy": false,
-            "alt": "Cream Crackers"
+            "alt": "Cream Crackers",
+            "category": "Bakery & Snacks"
         },
         "Cream Crackers": {
             "price": 320,
             "days_to_expire": 180,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Bakery & Snacks"
         },
         "Nice Biscuits": {
             "price": 200,
             "days_to_expire": 180,
             "healthy": false,
-            "alt": "Marie Biscuits"
+            "alt": "Marie Biscuits",
+            "category": "Bakery & Snacks"
         },
         "Marie Biscuits": {
             "price": 210,
             "days_to_expire": 180,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Bakery & Snacks"
         },
         "Cassava Chips": {
             "price": 300,
             "days_to_expire": 60,
             "healthy": false,
-            "alt": "Roasted Chickpeas"
+            "alt": "Roasted Chickpeas",
+            "category": "Bakery & Snacks"
         },
         "Roasted Chickpeas": {
             "price": 250,
             "days_to_expire": 90,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Bakery & Snacks"
         },
         "Sesame Ball (Thala Guli)": {
             "price": 50,
             "days_to_expire": 14,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Bakery & Snacks"
+        },
+        "Tipitip": {
+            "price": 100,
+            "days_to_expire": 30,
+            "healthy": false,
+            "alt": "Roasted Chickpeas",
+            "category": "Bakery & Snacks"
+        },
+        "Snickers": {
+            "price": 100,
+            "days_to_expire": 7,
+            "healthy": false,
+            "alt": "Sesame Ball (Thala Guli)",
+            "category": "Bakery & Snacks"
+        },
+        "Chicken Burger": {
+            "price": 500,
+            "days_to_expire": 3,
+            "healthy": false,
+            "alt": "Grilled Chicken Salad",
+            "category": "Bakery & Snacks"
+        },
+        "Pizza": {
+            "price": 2200,
+            "days_to_expire": 2,
+            "healthy": false,
+            "alt": "Grilled Chicken Salad",
+            "category": "Bakery & Snacks"
         }
     },
     "Dairy & Chill": {
@@ -190,49 +248,71 @@
             "price": 120,
             "days_to_expire": 14,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Dairy & Chill"
         },
         "Highland Yoghurt": {
             "price": 80,
             "days_to_expire": 10,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Dairy & Chill"
         },
         "Curd (Mee Kiri)": {
             "price": 450,
             "days_to_expire": 7,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Dairy & Chill"
         },
         "Happy Cow Cheese": {
             "price": 950,
             "days_to_expire": 90,
             "healthy": false,
-            "alt": "Cottage Cheese"
+            "alt": "Cottage Cheese",
+            "category": "Dairy & Chill"
         },
         "Cottage Cheese": {
             "price": 1200,
             "days_to_expire": 10,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Dairy & Chill"
         },
         "Chocolate Milk": {
             "price": 180,
             "days_to_expire": 30,
             "healthy": false,
-            "alt": "Highland Milk Packet"
+            "alt": "Highland Milk Packet",
+            "category": "Dairy & Chill"
         },
         "Butter": {
             "price": 850,
             "days_to_expire": 30,
             "healthy": false,
-            "alt": "Olive Oil Spread"
+            "alt": "Olive Oil Spread",
+            "category": "Dairy & Chill"
         },
         "Olive Oil Spread": {
             "price": 1100,
             "days_to_expire": 60,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Dairy & Chill"
+        },
+        "Grilled Chicken Salad": {
+            "price": 550,
+            "days_to_expire": 1,
+            "healthy": true,
+            "alt": null,
+            "category": "Dairy & Chill"
+        },
+        "Chicken Breast": {
+            "price": 500,
+            "days_to_expire": 3,
+            "healthy": true,
+            "alt": "Soya Meat (Chicken Flavor)",
+            "category": "Dairy & Chill"
         }
     },
     "Beverages": {
@@ -240,43 +320,50 @@
             "price": 150,
             "days_to_expire": 180,
             "healthy": false,
-            "alt": "King Coconut (Thambili)"
+            "alt": "King Coconut (Thambili)",
+            "category": "Beverages"
         },
         "King Coconut (Thambili)": {
             "price": 100,
             "days_to_expire": 3,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Beverages"
         },
         "Coca Cola": {
             "price": 200,
             "days_to_expire": 90,
             "healthy": false,
-            "alt": "Fresh Lime Juice"
+            "alt": "Fresh Lime Juice",
+            "category": "Beverages"
         },
         "Fresh Lime Juice": {
             "price": 150,
             "days_to_expire": 2,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Beverages"
         },
         "Faluda": {
             "price": 300,
             "days_to_expire": 180,
             "healthy": false,
-            "alt": "Woodapple Nectar"
+            "alt": "Woodapple Nectar",
+            "category": "Beverages"
         },
         "Woodapple Nectar": {
             "price": 280,
             "days_to_expire": 180,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Beverages"
         },
         "Ceylon Tea (BOPF)": {
             "price": 650,
             "days_to_expire": 365,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Beverages"
         }
     },
     "Produce": {
@@ -284,37 +371,64 @@
             "price": 450,
             "days_to_expire": 14,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Produce"
         },
         "Green Chillies": {
             "price": 300,
             "days_to_expire": 7,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Produce"
         },
         "Curry Leaves": {
             "price": 50,
             "days_to_expire": 10,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Produce"
         },
         "Banana (Ambul)": {
             "price": 200,
             "days_to_expire": 5,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Produce"
         },
         "Papaya": {
             "price": 300,
             "days_to_expire": 4,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Produce"
         },
         "Gotukola Bundle": {
             "price": 60,
             "days_to_expire": 3,
             "healthy": true,
-            "alt": null
+            "alt": null,
+            "category": "Produce"
+        },
+        "Passion Fruit": {
+            "price": 120,
+            "days_to_expire": 7,
+            "healthy": true,
+            "alt": null,
+            "category": "Produce"
+        },
+        "Avacado": {
+            "price": 500,
+            "days_to_expire": 3,
+            "healthy": true,
+            "alt": "Passion Fruit",
+            "category": "Produce"
+        },
+        "Grapes": {
+            "price": 800,
+            "days_to_expire": 4,
+            "healthy": true,
+            "alt": "Banana (Ambul)",
+            "category": "Produce"
         }
     }
 }
