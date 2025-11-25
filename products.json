@@ -127,6 +127,13 @@
             "healthy": true,
             "alt": null,
             "category": "Pantry Staples"
+        },
+        "Salmon": {
+            "price": 500,
+            "days_to_expire": 30,
+            "healthy": true,
+            "alt": "Fresh Tuna Fillet",
+            "category": "Pantry Staples"
         }
     },
     "Bakery & Snacks": {
@@ -313,6 +320,13 @@
             "healthy": true,
             "alt": "Soya Meat (Chicken Flavor)",
             "category": "Dairy & Chill"
+        },
+        "Fresh Tuna Fillet": {
+            "price": 800,
+            "days_to_expire": 2,
+            "healthy": true,
+            "alt": null,
+            "category": "Dairy & Chill"
         }
     },
     "Beverages": {
@@ -363,6 +377,13 @@
             "days_to_expire": 365,
             "healthy": true,
             "alt": null,
+            "category": "Beverages"
+        },
+        "Kist Ride": {
+            "price": 350,
+            "days_to_expire": 30,
+            "healthy": false,
+            "alt": "King Coconut (Thambili)",
             "category": "Beverages"
         }
     },
@@ -428,6 +449,13 @@
             "days_to_expire": 4,
             "healthy": true,
             "alt": "Banana (Ambul)",
+            "category": "Produce"
+        },
+        "Mangoes": {
+            "price": 500,
+            "days_to_expire": 3,
+            "healthy": true,
+            "alt": "Papaya",
             "category": "Produce"
         }
     }
