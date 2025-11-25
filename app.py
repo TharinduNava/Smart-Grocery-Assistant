@@ -4,13 +4,12 @@ import json
 import re
 from datetime import datetime, timedelta
 import google.generativeai as genai
-import os
 
 # ==========================================
 # 🔑 CONFIGURATION
 # ==========================================
 # ⚠️ SECURITY NOTE: For a real app, use st.secrets.
-GEMINI_API_KEY = st.secrets.get("GEMINI_API_KEY", "")
+GEMINI_API_KEY = "AIzaSyAkK97arUum4ADBRZV2TbYDWg-GF1rDSAg"  # <--- PASTE YOUR KEY HERE
 
 # Configure Gemini
 try:
@@ -886,5 +885,3 @@ with tab4:
                 st.info(alert)
         else:
             st.success("No restock predictions needed yet. ✅")
-
-
