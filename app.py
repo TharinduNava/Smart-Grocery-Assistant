@@ -9,7 +9,7 @@ import google.generativeai as genai
 # 🔑 CONFIGURATION
 # ==========================================
 # ⚠️ SECURITY NOTE: For a real app, use st.secrets.
-GEMINI_API_KEY = "AIzaSyAkK97arUum4ADBRZV2TbYDWg-GF1rDSAg"  # <--- PASTE YOUR KEY HERE
+GEMINI_API_KEY = st.secrets.get("GEMINI_API_KEY", "")
 
 # Configure Gemini
 try:
@@ -885,3 +885,4 @@ with tab4:
                 st.info(alert)
         else:
             st.success("No restock predictions needed yet. ✅")
+
