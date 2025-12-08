@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import json
 import re
-import time  # <--- IMPORT TIME MODULE HERE
+import time
 from datetime import datetime, timedelta
 import google.generativeai as genai
 import os
@@ -13,7 +13,6 @@ import os
 # ⚠️ SECURITY NOTE: For a real app, use st.secrets.
 GEMINI_API_KEY = st.secrets.get("GEMINI_API_KEY", "")
 
-# Configure Gemini
 try:
     genai.configure(api_key=GEMINI_API_KEY)
     model = genai.GenerativeModel('gemini-2.5-flash')
@@ -67,7 +66,6 @@ class DataManager:
         except FileNotFoundError:
             return {}
 
-    # NEW: Method to save the updated catalog
     @staticmethod
     def save_catalog(catalog_data):
         with open(DataManager.CATALOG_FILE, 'w') as f:
@@ -83,20 +81,17 @@ class DataManager:
             today = datetime.now()
 
             for entry in raw_data:
-                # Handle simulated dates vs real dates
                 if 'buy_date_offset' in entry:
                     buy_date = today + timedelta(days=entry['buy_date_offset'])
                     expiry_date = today + \
                         timedelta(days=entry['expiry_offset'])
                 else:
-                    # Handle string formats from saved JSON
                     try:
                         buy_date = datetime.strptime(
                             entry['buy_date'], "%Y-%m-%d")
                         expiry_date = datetime.strptime(
                             entry['expiry_date'], "%Y-%m-%d")
                     except TypeError:
-                        # Fallback if already datetime objects in session (rare edge case)
                         buy_date = entry['buy_date']
                         expiry_date = entry['expiry_date']
 
@@ -125,7 +120,6 @@ class DataManager:
             json.dump(serializable_data, f, indent=4)
 
 
-# Load Static Knowledge Base
 PRODUCT_CATALOG = DataManager.load_catalog()
 ALL_PRODUCTS = {}
 for cat, items in PRODUCT_CATALOG.items():
@@ -146,10 +140,8 @@ class SmartAgent:
             st.session_state.shopping_list = []
         if 'pending_suggestion' not in st.session_state:
             st.session_state.pending_suggestion = None
-        # Chat History for Gemini
         if "chat_history" not in st.session_state:
             st.session_state.chat_history = []
-        # State for Chat-based Adding Flow
         if "add_flow_item" not in st.session_state:
             st.session_state.add_flow_item = None
 
@@ -238,7 +230,6 @@ class SmartAgent:
         else:
             st.error(f"⚠️ Database Error: '{item_name}' not found.")
 
-    # --- AI: EXTRACT PRICE & DAYS FROM USER TEXT ---
     def extract_details_from_text(self, text):
         prompt = f"""
         Extract the 'price' (number) and 'days' (number) from this text: "{text}".
@@ -253,7 +244,6 @@ class SmartAgent:
         except:
             return {"price": None, "days": None}
 
-    # NEW: Updated to strict category rules
     def analyze_new_product(self, name, current_products_list, existing_categories):
         prompt = f"""
         I am adding a new product: "{name}".
@@ -297,7 +287,6 @@ class SmartAgent:
         except Exception as e:
             return {"input_product": {"healthy": True, "price": 0, "days_to_expire": 0, "category": "Unknown"}, "alt_name": None}
 
-    # --- GEMINI CONTEXT HELPER ---
     def get_context_string(self):
         """Creates a string summary of the current pantry and cart for the AI"""
         sim_date = self.get_simulation_date().strftime('%Y-%m-%d')
@@ -321,7 +310,6 @@ class SmartAgent:
 st.set_page_config(page_title="Smart Grocery Agent",
                    page_icon="🛒", layout="wide")
 
-# Load CSS
 load_custom_styles()
 
 agent = SmartAgent()
@@ -333,7 +321,6 @@ agent = SmartAgent()
 
 @st.dialog("📝 Manage Products", width="small")
 def open_add_product_modal():
-    # Toggle between Add and Edit Modes
     mode = st.radio("Select Mode", [
                     "➕ Add New Product", "✏️ Edit Existing Product"], horizontal=True)
     st.divider()
@@ -354,7 +341,6 @@ def open_add_product_modal():
             submitted = st.form_submit_button("Save New Product")
 
             if submitted and new_name:
-                # Prevent duplicates
                 if new_name in ALL_PRODUCTS:
                     st.error(
                         f"'{new_name}' already exists! Switch to Edit mode to update it.")
@@ -365,7 +351,6 @@ def open_add_product_modal():
                             new_name, current_keys, existing_cats)
                         final_alt_name = ai_result.get('alt_name')
 
-                        # Logic: Did AI invent a new product?
                         if ai_result.get('alt_source') == "new" and final_alt_name:
                             details = ai_result['new_product_details']
                             new_healthy_item = {
@@ -383,7 +368,6 @@ def open_add_product_modal():
                             st.toast(
                                 f"🎉 AI auto-created: {final_alt_name} ({cat})")
 
-                        # Create the user's ORIGINAL product entry
                         user_item_entry = {
                             "price": new_price,
                             "days_to_expire": new_expiry_days,
@@ -399,7 +383,6 @@ def open_add_product_modal():
 
                         DataManager.save_catalog(PRODUCT_CATALOG)
                         st.success(f"Added {new_name} successfully!")
-                        # ADDED: Wait for 1.5s so user sees the message before rerun
                         time.sleep(1.5)
                         # st.rerun()
 
@@ -409,22 +392,18 @@ def open_add_product_modal():
     else:
         st.caption("Update details for items already in your database.")
 
-        # Dropdown to select item
         all_item_names = sorted(list(ALL_PRODUCTS.keys()))
         selected_item_name = st.selectbox(
             "Select Item to Edit", all_item_names)
 
         if selected_item_name:
-            # Retrieve current details
             current_details = ALL_PRODUCTS[selected_item_name]
             current_cat = current_details.get('category', 'Pantry Staples')
             current_price = current_details.get('price', 0)
             current_expiry = current_details.get('days_to_expire', 7)
 
             with st.form("edit_product_form"):
-                # Allow editing fields
                 existing_cats = list(PRODUCT_CATALOG.keys())
-                # Safe index finding
                 cat_index = existing_cats.index(
                     current_cat) if current_cat in existing_cats else 0
 
@@ -438,41 +417,31 @@ def open_add_product_modal():
                 submitted_edit = st.form_submit_button("Update Item")
 
                 if submitted_edit:
-                    # 1. Create Updated Entry (Preserve healthy/alt status)
                     updated_entry = current_details.copy()
                     updated_entry['price'] = edit_price
                     updated_entry['days_to_expire'] = edit_expiry
-                    # 'healthy' and 'alt' remain unchanged from original to avoid losing AI logic
 
-                    # 2. Handle Category Change (Move Item)
                     if edit_category != current_cat:
-                        # Remove from old category
                         if current_cat in PRODUCT_CATALOG and selected_item_name in PRODUCT_CATALOG[current_cat]:
                             del PRODUCT_CATALOG[current_cat][selected_item_name]
 
-                        # Add to new category
                         if edit_category not in PRODUCT_CATALOG:
                             PRODUCT_CATALOG[edit_category] = {}
                         PRODUCT_CATALOG[edit_category][selected_item_name] = updated_entry
 
-                        # Update local cache category
                         updated_entry['category'] = edit_category
                     else:
-                        # Just update the entry in place
                         PRODUCT_CATALOG[edit_category][selected_item_name] = updated_entry
 
-                    # 3. Save and Refresh
                     DataManager.save_catalog(PRODUCT_CATALOG)
                     st.success(
                         f"✅ Updated '{selected_item_name}' successfully!")
-                    # ADDED: Wait for 1.5s so user sees the message before rerun
                     time.sleep(1.5)
                     # st.rerun()
 
 
 @st.dialog("✨ Smart Grocery AI", width="medium")
 def open_chat_modal():
-    # Header Section
     c1, c2 = st.columns([4, 1])
     with c1:
         st.markdown(
@@ -484,7 +453,6 @@ def open_chat_modal():
 
     st.divider()
 
-    # Chat Container
     chat_container = st.container(height=400)
 
     with chat_container:
@@ -497,9 +465,7 @@ def open_chat_modal():
             with st.chat_message(message["role"], avatar=avatar):
                 st.markdown(message["content"])
 
-    # Chat Input
     if prompt := st.chat_input("Type 'Add Pizza' or ask a question..."):
-        # 1. Show User Message
         st.session_state.chat_history.append(
             {"role": "user", "content": prompt})
         with chat_container:
@@ -509,27 +475,22 @@ def open_chat_modal():
             with st.chat_message("assistant", avatar="🤖"):
                 with st.spinner("Thinking..."):
 
-                    # === FLOW 1: USER IS PROVIDING DETAILS FOR PENDING ADD ===
                     if st.session_state.add_flow_item:
                         item_name = st.session_state.add_flow_item
-                        # Extract details from user's natural language text
                         extracted = agent.extract_details_from_text(prompt)
 
                         if extracted['price'] and extracted['days']:
-                            # We have the details! Execute Add Logic.
                             st.markdown(
                                 f"🔄 Analyzing **{item_name}** and finding healthy alternatives...")
 
                             current_keys = list(ALL_PRODUCTS.keys())
                             existing_cats = list(PRODUCT_CATALOG.keys())
 
-                            # 1. Run AI Analysis
                             ai_result = agent.analyze_new_product(
                                 item_name, current_keys, existing_cats)
 
                             final_alt_name = ai_result.get('alt_name')
 
-                            # 2. Save Alternative (if new)
                             if ai_result.get('alt_source') == "new" and final_alt_name:
                                 det = ai_result['new_product_details']
                                 new_alt_entry = {
@@ -546,7 +507,6 @@ def open_chat_modal():
                                 ALL_PRODUCTS[final_alt_name] = new_alt_entry
                                 ALL_PRODUCTS[final_alt_name]['category'] = cat
 
-                            # 3. Save User Item
                             target_cat = "Pantry Staples"
                             if final_alt_name:
                                 target_cat = ALL_PRODUCTS.get(final_alt_name, {}).get(
@@ -563,7 +523,6 @@ def open_chat_modal():
                                 PRODUCT_CATALOG[target_cat] = {}
                             PRODUCT_CATALOG[target_cat][item_name] = user_entry
 
-                            # Update global memory so the chat knows about it immediately
                             ALL_PRODUCTS[item_name] = user_entry
                             ALL_PRODUCTS[item_name]['category'] = target_cat
 
@@ -578,7 +537,7 @@ def open_chat_modal():
                             st.markdown(success_msg)
                             st.session_state.chat_history.append(
                                 {"role": "assistant", "content": success_msg})
-                            st.session_state.add_flow_item = None  # Reset Flow
+                            st.session_state.add_flow_item = None
 
                         else:
                             err_msg = f"⚠️ I couldn't find the numbers. Please type exactly like this: **500 3** (Price then Days)."
@@ -586,7 +545,6 @@ def open_chat_modal():
                             st.session_state.chat_history.append(
                                 {"role": "assistant", "content": err_msg})
 
-                    # === FLOW 2: NORMAL CHAT / START ADD ===
                     else:
                         context_data = agent.get_context_string()
                         system_instruction = f"""
@@ -605,7 +563,6 @@ def open_chat_modal():
                                 f"{system_instruction}\nUser: {prompt}")
                             text_response = response.text
 
-                            # Check for JSON command
                             command = None
                             try:
                                 clean_json = text_response.replace(
@@ -643,13 +600,11 @@ with st.sidebar:
     st.markdown(f"**Date:** `{sim_date.strftime('%Y-%m-%d')}`")
     st.divider()
 
-    # === NEW: ADD PRODUCT BUTTON ===
     if st.button("➕ Manage Products", use_container_width=True):
         open_add_product_modal()
 
     st.divider()
 
-    # === CHAT BUTTON (Triggers Popup) ===
     st.markdown("### 🤖 AI Assistant")
 
     if st.button("✨ Chat with Agent", use_container_width=True):
@@ -891,5 +846,3 @@ with tab4:
                 st.info(alert)
         else:
             st.success("No restock predictions needed yet. ✅")
-
-
